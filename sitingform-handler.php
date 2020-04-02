@@ -35,12 +35,12 @@ function validate_date($date) {
 $errors = array();
 
 if(isset($_POST["sitingButton"]) && empty($errors)) {
-	$date = htmlspecialchars($_POST['date']);
+	$date = $_POST['date'];
 	$date = date("Y-m-d H:i:s",strtotime($date));
-	$sex = htmlspecialchars($_POST['sex']);
-	$conditions = htmlspecialchars($_POST['conditions']);
-	$comments = htmlspecialchars($_POST['comments']);
-	$user_id = htmlspecialchars($_SESSION['user_id']);
+	$sex = $_POST['sex'];
+	$conditions = $_POST['conditions'];
+	$comments = $_POST['comments'];
+	$user_id = $_SESSION['user_id'];
 	
 	try
 	{

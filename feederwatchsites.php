@@ -52,14 +52,14 @@ catch(Exception $e){
 				<tbody>				
 				<?php foreach($users as $user){ 
 					$id = $user['id'];
-					$_SESSION['selected_userid'] = $id;
-					$_SESSION['selected_username'] = $user['username'];
+					//$_SESSION['selected_userid'] = $id;
+					//$_SESSION['selected_username'] = $user['username'];
 					$siting = $dao->getSitings($id);
 					$num_sitings = count($siting);
 			
 				?> 
 				<tr>
-					<td class="item-center"><a href="selected-user.php?username=<?= $user["username"];?>&id=<?= $id;?>"><?= $user["username"]; ?></a></td>
+					<td class="item-center"><a href="selected-user.php?username=<?= htmlspecialchars($user["username"]);?>&id=<?= $id;?>"><?= htmlspecialchars($user["username"]); ?></a></td>
 					<td class="item-center"><?= count($siting); ?></td>
 				</tr>
 				<?php } ?>

@@ -56,10 +56,10 @@ catch(Exception $e){
 			<tbody>				
 			<?php foreach($siting as $siting){ ?> 
 			<tr>
-				<td class="item-center"><?= $siting["date"]; ?></td>
-				<td class="item-center"><?= $siting["sex"]; ?></td>
-				<td class="item-left"><?= $siting["conditions"]; ?></td>
-				<td class="item-left"><?= $siting["comment"]; ?></td>
+				<td class="item-center"><?= htmlspecialchars($siting["date"]); ?></td>
+				<td class="item-center"><?= htmlspecialchars($siting["sex"]); ?></td>
+				<td class="item-left"><?= htmlspecialchars($siting["conditions"]); ?></td>
+				<td class="item-left"><?= htmlspecialchars($siting["comment"]); ?></td>
 			</tr>
 			<?php } ?>
         </table>

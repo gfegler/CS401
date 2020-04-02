@@ -1,3 +1,8 @@
+
+
+
+
+
 <?php 
 session_start();
 
@@ -13,6 +18,7 @@ $email = $_POST['email'];
 
 $errors = array();
 
+
 /**
  * Verify first name:
  * - between 1 and 50 characters long
@@ -20,9 +26,11 @@ $errors = array();
  */
 if(!valid_length($fname, 1, 50)) {
 	$errors['fname'] = "First name is required. Must be less than 50 characters.";
-	}elseif(preg_match('@[0-9]@', $fname)){
-    $errors['name'] = "Name should only include letters.";
+	}
+	elseif(!preg_match('/^[a-zA-Z]+$/', $fname)){
+    $errors['fname'] = "First name should only include letters and.";
 }
+
 
 /**
  * Verify last name:
@@ -31,14 +39,15 @@ if(!valid_length($fname, 1, 50)) {
  */
 if(!valid_length($lname, 1, 50)) {
 	$errors['lname'] = "Last name is required. Must be less than 50 characters.";
-	}elseif(preg_match('@[0-9]@', $lname)){
-    $errors['name'] = "Name should only include letters.";
+	}
+	elseif(!preg_match('/^[a-zA-Z]+$/', $lname)){
+    $errors['lname'] = "Last name should only include letters.";
 }
 
-if(!valid_length($username, 1, 50)) {
-	$errors['username'] = "Username is required. Must be less than 50 characters.";
-}elseif(preg_match('@[0-9]@', $lname)){
-    $errors['name'] = "Name should only include letters.";
+if(!valid_length($username, 6, 50)) {
+	$errors['username'] = "Username is required. Must be between 6 and 50 characters.";
+}elseif(!ctype_alnum($username)){
+    $errors['username'] = "Username should only include letters and numbers.";
 }
 
 /**
@@ -122,6 +131,11 @@ else {
 	die;
 }
 ?>
+
+
+
+
+
 
 
 
